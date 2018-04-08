@@ -17,14 +17,43 @@ public class CityServiceImpl implements CityService {
 
 
     @Override
-    public List<City> cities() {
-        return cityDao.cities();
+    public int deleteByPrimaryKey(Integer id) {
+        return cityDao.deleteByPrimaryKey(id);
+
     }
 
     @Override
-    public City findCityByName(String cityName) {
-        return cityDao.findCityByName(cityName);
+    public int insert(City record) {
+        return cityDao.insert(record);
+
     }
 
+    @Override
+    public int insertSelective(City record) {
+        return cityDao.insertSelective(record);
 
+    }
+
+    @Override
+    public City selectByPrimaryKey(Integer id) {
+        return cityDao.selectByPrimaryKey(id);
+
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(City record) {
+        return cityDao.updateByPrimaryKeySelective(record);
+
+    }
+
+    @Override
+    public int updateByPrimaryKey(City record) {
+        return cityDao.updateByPrimaryKey(record);
+
+    }
+
+    @Override
+    public List<City> cities() {
+        return cityDao.cities();
+    }
 }

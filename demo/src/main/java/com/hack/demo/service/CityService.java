@@ -6,7 +6,17 @@ import java.util.List;
 
 public interface CityService {
 
-    List<City> cities();
+    int deleteByPrimaryKey(Integer id);
 
-    City findCityByName(String cityName);
+    int insert(City record);
+
+    int insertSelective(City record);
+
+    City selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(City record);
+
+    int updateByPrimaryKey(City record);
+
+    List<City> cities();
 }

@@ -2,13 +2,13 @@ package com.hack.demo.controller;
 
 import com.hack.demo.domain.City;
 import com.hack.demo.service.CityService;
+import com.hack.demo.service.impl.CityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,13 +28,27 @@ public class HelloController {
         return "index";
     }
 
-    @RequestMapping(value = "api/cities", method = RequestMethod.GET)
-    public List<City> cities() {
-        return cityService.cities();
+    @RequestMapping(value = "api/city", method = RequestMethod.POST, consumes="application/json")
+    public String insertCityRecord(@RequestBody City record) {
+        cityService.insert(record);
+        return "index";
+
     }
 
-    @RequestMapping(value="api/city", method = RequestMethod.GET)
-    public City findOneCity(@RequestParam(value = "cityName", required = true) String cityName) {
-        return cityService.findCityByName(cityName);
+    @RequestMapping(value = "api/cities", method = RequestMethod.GET)
+    public List<City> cities() {
+        return  cityService.cities();
     }
+
+    @RequestMapping(value = "api/cityname", method = RequestMethod.GET)
+    public City findCityNameById(@RequestParam(value = "id") Integer id) {
+        return cityService.selectByPrimaryKey(id);
+    }
+
+    @RequestMapping(value = "api/updateCity")
+    public String updateCity(@RequestBody City record) {
+        cityService.updateByPrimaryKey(record);
+        return "updateUser";
+    }
+
 }
