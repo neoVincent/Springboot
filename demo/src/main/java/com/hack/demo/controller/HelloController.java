@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+//RestController = Controller + ResponseBody
 @RestController
 public class HelloController {
 

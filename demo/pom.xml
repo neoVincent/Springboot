@@ -69,14 +69,17 @@
             <version>${mysql-connector}</version>
         </dependency>
 
-		<!-- pageHelper 依赖 -->
-		<dependency>
+		<!-- pageHelper 依赖 -->		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>${page-helper}</version>
 		</dependency>
 
-
+		<!-- Thymeleaf 依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
 	</dependencies>
 
